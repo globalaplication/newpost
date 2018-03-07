@@ -2,6 +2,8 @@
 # -*- coding: utf-8 -*-
 import urllib
 import os
+import pynotify
+
 class post(object):
     def __init__ (self):
         url = "http://forum.pardus.org.tr/latest"
@@ -30,8 +32,11 @@ class post(object):
                     
                 if id < self.getindex(latest): 
                     print ("yenipost", latest)
+                    os.system('notify-send '+latest)
         
         self.update()
+        
+
 
     def gettag(self, line):
         start = line.find(">") + 1
